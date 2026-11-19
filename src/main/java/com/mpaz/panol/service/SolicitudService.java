@@ -35,6 +35,9 @@ public class SolicitudService {
     }
 
     public Solicitud crearSolicitud(Solicitud solicitud) {
+        if (solicitud.getId() != null && solicitud.getId() <= 0) {
+            solicitud.setId(null);
+        }
         // Regla Crítica de Negocio: Mínimo 3 horas de anticipación
         if (solicitud.getHorasAnticipacion() != null && solicitud.getHorasAnticipacion() < 3) {
             solicitud.setCumpleAnticipacion(false);

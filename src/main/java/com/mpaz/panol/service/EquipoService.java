@@ -34,6 +34,9 @@ public class EquipoService {
     }
 
     public Equipo guardar(Equipo equipo) {
+        if (equipo.getId() != null && equipo.getId() <= 0) {
+            equipo.setId(null);
+        }
         if (equipo.getCodigo() == null || equipo.getCodigo().trim().isEmpty()) {
             throw new IllegalArgumentException("El código del equipo es obligatorio");
         }
